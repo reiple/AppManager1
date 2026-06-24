@@ -1,69 +1,72 @@
+import { useTranslation } from 'react-i18next'
 import './Dashboard.css'
 
 export function Dashboard() {
+  const { t } = useTranslation()
+
   return (
     <div className="dashboard">
       <div className="dashboard-header">
-        <h2>Dashboard</h2>
-        <p>Welcome to Application Manager</p>
+        <h2>{t('dashboard.title')}</h2>
+        <p>{t('dashboard.subtitle')}</p>
       </div>
 
       <div className="dashboard-grid">
         <div className="card">
           <div className="card-header">
-            <h3>Total Applications</h3>
+            <h3>{t('dashboard.totalApplications')}</h3>
           </div>
           <div className="card-content">
             <div className="stat-value">12</div>
-            <div className="stat-label">Active applications</div>
+            <div className="stat-label">{t('dashboard.activeApplications')}</div>
           </div>
         </div>
 
         <div className="card">
           <div className="card-header">
-            <h3>System Status</h3>
+            <h3>{t('dashboard.systemStatus')}</h3>
           </div>
           <div className="card-content">
             <div className="stat-value status-ok">●</div>
-            <div className="stat-label">All systems operational</div>
+            <div className="stat-label">{t('dashboard.allSystemsOperational')}</div>
           </div>
         </div>
 
         <div className="card">
           <div className="card-header">
-            <h3>Recent Deployments</h3>
+            <h3>{t('dashboard.recentDeployments')}</h3>
           </div>
           <div className="card-content">
             <div className="stat-value">3</div>
-            <div className="stat-label">Last 7 days</div>
+            <div className="stat-label">{t('dashboard.lastSevenDays')}</div>
           </div>
         </div>
 
         <div className="card">
           <div className="card-header">
-            <h3>Users</h3>
+            <h3>{t('dashboard.users')}</h3>
           </div>
           <div className="card-content">
             <div className="stat-value">48</div>
-            <div className="stat-label">Total users</div>
+            <div className="stat-label">{t('dashboard.totalUsers')}</div>
           </div>
         </div>
       </div>
 
       <div className="recent-activity">
-        <h3>Recent Activity</h3>
+        <h3>{t('dashboard.recentActivity')}</h3>
         <div className="activity-list">
           <div className="activity-item">
-            <div className="activity-time">2 hours ago</div>
-            <div className="activity-text">App deployment completed</div>
+            <div className="activity-time">2 {t('dashboard.hoursAgo')}</div>
+            <div className="activity-text">{t('dashboard.appDeploymentCompleted')}</div>
           </div>
           <div className="activity-item">
-            <div className="activity-time">5 hours ago</div>
-            <div className="activity-text">User John Doe added to system</div>
+            <div className="activity-time">5 {t('dashboard.hoursAgo')}</div>
+            <div className="activity-text">{t('dashboard.userAdded')}</div>
           </div>
           <div className="activity-item">
-            <div className="activity-time">1 day ago</div>
-            <div className="activity-text">System backup completed</div>
+            <div className="activity-time">1 {t('dashboard.daysAgo')}</div>
+            <div className="activity-text">{t('dashboard.systemBackupCompleted')}</div>
           </div>
         </div>
       </div>

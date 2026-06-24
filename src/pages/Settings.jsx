@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import './Settings.css'
 
 export function Settings() {
+  const { t } = useTranslation()
   const [settings, setSettings] = useState({
     appName: 'Application Manager',
     refreshInterval: 30,
@@ -39,30 +41,30 @@ export function Settings() {
   return (
     <div className="settings-page">
       <div className="page-header">
-        <h2>Settings</h2>
-        <p>Configure the application manager</p>
+        <h2>{t('settings.title')}</h2>
+        <p>{t('settings.subtitle')}</p>
       </div>
 
-      {savedMessage && <div className="success-message">Settings saved successfully!</div>}
+      {savedMessage && <div className="success-message">{t('settings.settingsSavedSuccessfully')}</div>}
 
       <div className="settings-container">
         <div className="settings-section">
-          <h3>General Settings</h3>
+          <h3>{t('settings.generalSettings')}</h3>
 
           <div className="setting-group">
-            <label htmlFor="appName">Application Name</label>
+            <label htmlFor="appName">{t('settings.applicationName')}</label>
             <input
               id="appName"
               type="text"
               value={settings.appName}
               onChange={(e) => handleChange('appName', e.target.value)}
-              placeholder="Enter application name"
+              placeholder={t('settings.enterApplicationName')}
             />
-            <small>The name displayed in the header</small>
+            <small>{t('settings.nameDisplayedInHeader')}</small>
           </div>
 
           <div className="setting-group">
-            <label htmlFor="refreshInterval">Refresh Interval (seconds)</label>
+            <label htmlFor="refreshInterval">{t('settings.refreshInterval')}</label>
             <input
               id="refreshInterval"
               type="number"
@@ -71,11 +73,11 @@ export function Settings() {
               value={settings.refreshInterval}
               onChange={(e) => handleChange('refreshInterval', parseInt(e.target.value))}
             />
-            <small>How often to refresh metrics and logs (10-300 seconds)</small>
+            <small>{t('settings.refreshIntervalRange')}</small>
           </div>
 
           <div className="setting-group">
-            <label htmlFor="logRetention">Log Retention (days)</label>
+            <label htmlFor="logRetention">{t('settings.logRetention')}</label>
             <input
               id="logRetention"
               type="number"
@@ -84,12 +86,12 @@ export function Settings() {
               value={settings.logRetention}
               onChange={(e) => handleChange('logRetention', parseInt(e.target.value))}
             />
-            <small>How long to keep logs before automatic deletion (1-90 days)</small>
+            <small>{t('settings.logRetentionRange')}</small>
           </div>
         </div>
 
         <div className="settings-section">
-          <h3>Features</h3>
+          <h3>{t('settings.features')}</h3>
 
           <div className="setting-group checkbox-group">
             <label>
@@ -98,9 +100,9 @@ export function Settings() {
                 checked={settings.enableNotifications}
                 onChange={(e) => handleChange('enableNotifications', e.target.checked)}
               />
-              Enable Notifications
+              {t('settings.enableNotifications')}
             </label>
-            <small>Get alerts for errors and warnings</small>
+            <small>{t('settings.getAlertsForErrors')}</small>
           </div>
 
           <div className="setting-group checkbox-group">
@@ -110,9 +112,9 @@ export function Settings() {
                 checked={settings.enableAutoRestart}
                 onChange={(e) => handleChange('enableAutoRestart', e.target.checked)}
               />
-              Enable Auto-Restart
+              {t('settings.enableAutoRestart')}
             </label>
-            <small>Automatically restart failed applications</small>
+            <small>{t('settings.automaticallyRestartFailed')}</small>
           </div>
 
           <div className="setting-group checkbox-group">
@@ -122,54 +124,54 @@ export function Settings() {
                 checked={settings.maintenanceMode}
                 onChange={(e) => handleChange('maintenanceMode', e.target.checked)}
               />
-              Maintenance Mode
+              {t('settings.maintenanceMode')}
             </label>
-            <small>Restrict access during maintenance</small>
+            <small>{t('settings.restrictAccessDuringMaintenance')}</small>
           </div>
         </div>
 
         <div className="settings-section">
-          <h3>Danger Zone</h3>
+          <h3>{t('settings.dangerZone')}</h3>
 
           <div className="danger-action">
             <div>
-              <h4>Clear All Logs</h4>
-              <p>Permanently delete all application logs</p>
+              <h4>{t('settings.clearAllLogs')}</h4>
+              <p>{t('settings.permanentlyDeleteLogs')}</p>
             </div>
-            <button className="btn btn-danger">Clear Logs</button>
+            <button className="btn btn-danger">{t('settings.clearLogs')}</button>
           </div>
 
           <div className="danger-action">
             <div>
-              <h4>Reset Settings</h4>
-              <p>Reset all settings to default values</p>
+              <h4>{t('settings.resetSettings')}</h4>
+              <p>{t('settings.resetSettingsToDefault')}</p>
             </div>
             <button className="btn btn-danger" onClick={handleReset}>
-              Reset
+              {t('settings.reset')}
             </button>
           </div>
 
           <div className="danger-action">
             <div>
-              <h4>Export Configuration</h4>
-              <p>Download current configuration as JSON</p>
+              <h4>{t('settings.exportConfiguration')}</h4>
+              <p>{t('settings.downloadConfiguration')}</p>
             </div>
-            <button className="btn btn-primary">Export</button>
+            <button className="btn btn-primary">{t('settings.export')}</button>
           </div>
         </div>
 
         <div className="settings-actions">
           <button className="btn btn-primary btn-large" onClick={handleSave}>
-            Save Settings
+            {t('settings.saveSettings')}
           </button>
           <button className="btn btn-secondary btn-large" onClick={handleReset}>
-            Reset to Default
+            {t('settings.resetToDefault')}
           </button>
         </div>
       </div>
 
       <div className="settings-info">
-        <h3>Current Configuration</h3>
+        <h3>{t('settings.currentConfiguration')}</h3>
         <pre className="config-preview">{JSON.stringify(settings, null, 2)}</pre>
       </div>
     </div>

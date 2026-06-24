@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import './ApplicationManagement.css'
 
 export function ApplicationManagement() {
+  const { t } = useTranslation()
+
   const [applications, setApplications] = useState([
     {
       id: 1,
-      name: 'User Service',
+      nameKey: 'applications.userService',
       port: 8081,
       status: 'running',
       uptime: '45 days',
@@ -14,7 +17,7 @@ export function ApplicationManagement() {
     },
     {
       id: 2,
-      name: 'Order Service',
+      nameKey: 'applications.orderService',
       port: 8082,
       status: 'running',
       uptime: '23 days',
@@ -23,7 +26,7 @@ export function ApplicationManagement() {
     },
     {
       id: 3,
-      name: 'Payment Service',
+      nameKey: 'applications.paymentService',
       port: 8083,
       status: 'stopped',
       uptime: '0 days',
@@ -32,7 +35,7 @@ export function ApplicationManagement() {
     },
     {
       id: 4,
-      name: 'Notification Service',
+      nameKey: 'applications.notificationService',
       port: 8084,
       status: 'running',
       uptime: '10 days',
@@ -64,31 +67,31 @@ export function ApplicationManagement() {
   return (
     <div className="app-management">
       <div className="page-header">
-        <h2>Application Management</h2>
-        <p>Manage and monitor your Spring Boot applications</p>
+        <h2>{t('applications.title')}</h2>
+        <p>{t('applications.subtitle')}</p>
       </div>
 
       <div className="apps-table-container">
         <table className="apps-table">
           <thead>
             <tr>
-              <th>Application Name</th>
-              <th>Port</th>
-              <th>Status</th>
-              <th>Uptime</th>
-              <th>Memory</th>
-              <th>CPU</th>
-              <th>Actions</th>
+              <th>{t('applications.applicationName')}</th>
+              <th>{t('applications.port')}</th>
+              <th>{t('applications.status')}</th>
+              <th>{t('applications.uptime')}</th>
+              <th>{t('applications.memory')}</th>
+              <th>{t('applications.cpu')}</th>
+              <th>{t('applications.actions')}</th>
             </tr>
           </thead>
           <tbody>
             {applications.map(app => (
               <tr key={app.id}>
-                <td className="app-name">{app.name}</td>
+                <td className="app-name">{t(app.nameKey)}</td>
                 <td>{app.port}</td>
                 <td>
                   <span className="status-badge" style={{ backgroundColor: getStatusColor(app.status) }}>
-                    {app.status.toUpperCase()}
+                    {app.status === 'running' ? t('applications.running') : t('applications.stopped')}
                   </span>
                 </td>
                 <td>{app.uptime}</td>
@@ -100,17 +103,17 @@ export function ApplicationManagement() {
                       className="btn btn-danger"
                       onClick={() => handleStop(app.id)}
                     >
-                      Stop
+                      {t('applications.stop')}
                     </button>
                   ) : (
                     <button
                       className="btn btn-success"
                       onClick={() => handleStart(app.id)}
                     >
-                      Start
+                      {t('applications.start')}
                     </button>
                   )}
-                  <button className="btn btn-info">Logs</button>
+                  <button className="btn btn-info">{t('applications.logs')}</button>
                 </td>
               </tr>
             ))}
@@ -120,15 +123,15 @@ export function ApplicationManagement() {
 
       <div className="summary">
         <div className="summary-item">
-          <div className="summary-label">Running</div>
+          <div className="summary-label">{t('applications.summaryRunning')}</div>
           <div className="summary-value">{applications.filter(a => a.status === 'running').length}</div>
         </div>
         <div className="summary-item">
-          <div className="summary-label">Stopped</div>
+          <div className="summary-label">{t('applications.summaryStopped')}</div>
           <div className="summary-value">{applications.filter(a => a.status === 'stopped').length}</div>
         </div>
         <div className="summary-item">
-          <div className="summary-label">Total</div>
+          <div className="summary-label">{t('applications.summaryTotal')}</div>
           <div className="summary-value">{applications.length}</div>
         </div>
       </div>

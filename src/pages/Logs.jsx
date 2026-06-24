@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import './Logs.css'
 
 export function Logs() {
+  const { t } = useTranslation()
   const [selectedApp, setSelectedApp] = useState('all')
   const [logLevel, setLogLevel] = useState('all')
   const [logs, setLogs] = useState([
@@ -89,41 +91,41 @@ export function Logs() {
   return (
     <div className="logs-page">
       <div className="page-header">
-        <h2>Application Logs</h2>
-        <p>View and filter logs from your applications</p>
+        <h2>{t('logs.title')}</h2>
+        <p>{t('logs.subtitle')}</p>
       </div>
 
       <div className="filters">
         <div className="filter-group">
-          <label>Application:</label>
+          <label>{t('logs.application')}</label>
           <select value={selectedApp} onChange={(e) => setSelectedApp(e.target.value)}>
             {apps.map(app => (
               <option key={app} value={app}>
-                {app === 'all' ? 'All Applications' : app}
+                {app === 'all' ? t('logs.allApplications') : app}
               </option>
             ))}
           </select>
         </div>
 
         <div className="filter-group">
-          <label>Log Level:</label>
+          <label>{t('logs.logLevel')}</label>
           <select value={logLevel} onChange={(e) => setLogLevel(e.target.value)}>
             {levels.map(level => (
               <option key={level} value={level}>
-                {level === 'all' ? 'All Levels' : level}
+                {level === 'all' ? t('logs.allLevels') : level}
               </option>
             ))}
           </select>
         </div>
 
         <button className="btn btn-danger" onClick={handleClearLogs}>
-          Clear Logs
+          {t('logs.clearLogs')}
         </button>
       </div>
 
       <div className="logs-container">
         <div className="logs-info">
-          Showing {filteredLogs.length} of {logs.length} logs
+          {t('logs.showing')} {filteredLogs.length} {t('logs.of')} {logs.length} {t('logs.logs')}
         </div>
 
         <div className="logs-list">
@@ -142,7 +144,7 @@ export function Logs() {
               </div>
             ))
           ) : (
-            <div className="no-logs">No logs found</div>
+            <div className="no-logs">{t('logs.noLogs')}</div>
           )}
         </div>
       </div>

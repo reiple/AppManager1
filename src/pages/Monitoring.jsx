@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import './Monitoring.css'
 
 export function Monitoring() {
+  const { t } = useTranslation()
   const [metrics, setMetrics] = useState([
     {
       id: 1,
@@ -85,13 +87,13 @@ export function Monitoring() {
   return (
     <div className="monitoring-page">
       <div className="page-header">
-        <h2>System Monitoring</h2>
-        <p>Real-time performance metrics for your applications</p>
+        <h2>{t('monitoring.title')}</h2>
+        <p>{t('monitoring.subtitle')}</p>
       </div>
 
       <div className="system-overview">
         <div className="metric-card">
-          <div className="metric-label">System CPU Usage</div>
+          <div className="metric-label">{t('monitoring.systemCpuUsage')}</div>
           <div className="metric-large">{systemMetrics.totalCpu.toFixed(1)}%</div>
           <div className="metric-bar">
             <div
@@ -105,7 +107,7 @@ export function Monitoring() {
         </div>
 
         <div className="metric-card">
-          <div className="metric-label">System Memory Usage</div>
+          <div className="metric-label">{t('monitoring.systemMemoryUsage')}</div>
           <div className="metric-large">{systemMetrics.totalMemory.toFixed(1)}%</div>
           <div className="metric-bar">
             <div
@@ -119,7 +121,7 @@ export function Monitoring() {
         </div>
 
         <div className="metric-card">
-          <div className="metric-label">Disk Usage</div>
+          <div className="metric-label">{t('monitoring.diskUsage')}</div>
           <div className="metric-large">{systemMetrics.totalDisk.toFixed(1)}%</div>
           <div className="metric-bar">
             <div
@@ -133,14 +135,14 @@ export function Monitoring() {
         </div>
 
         <div className="metric-card">
-          <div className="metric-label">Active Connections</div>
+          <div className="metric-label">{t('monitoring.activeConnections')}</div>
           <div className="metric-large">{systemMetrics.activeConnections}</div>
-          <div className="metric-description">connections</div>
+          <div className="metric-description">{t('monitoring.connections')}</div>
         </div>
       </div>
 
       <div className="applications-metrics">
-        <h3>Application Metrics</h3>
+        <h3>{t('monitoring.applicationMetrics')}</h3>
         <div className="metrics-grid">
           {metrics.map(metric => {
             const status = getHealthStatus(metric.cpu, metric.memory, metric.errorRate)
@@ -159,7 +161,7 @@ export function Monitoring() {
 
                 <div className="metrics-row">
                   <div className="metric">
-                    <div className="metric-label">CPU</div>
+                    <div className="metric-label">{t('monitoring.cpuLabel')}</div>
                     <div className="metric-value">{metric.cpu.toFixed(1)}%</div>
                     <div className="metric-bar-small">
                       <div
@@ -173,7 +175,7 @@ export function Monitoring() {
                   </div>
 
                   <div className="metric">
-                    <div className="metric-label">Memory</div>
+                    <div className="metric-label">{t('monitoring.memoryLabel')}</div>
                     <div className="metric-value">{metric.memory.toFixed(1)}%</div>
                     <div className="metric-bar-small">
                       <div
@@ -189,19 +191,19 @@ export function Monitoring() {
 
                 <div className="metrics-row">
                   <div className="metric">
-                    <div className="metric-label">Requests/min</div>
+                    <div className="metric-label">{t('monitoring.requestsPerMin')}</div>
                     <div className="metric-value">{metric.requestsPerMin.toFixed(0)}</div>
                   </div>
 
                   <div className="metric">
-                    <div className="metric-label">Error Rate</div>
+                    <div className="metric-label">{t('monitoring.errorRate')}</div>
                     <div className="metric-value">{metric.errorRate.toFixed(2)}%</div>
                   </div>
                 </div>
 
                 <div className="metrics-row">
                   <div className="metric full-width">
-                    <div className="metric-label">Avg Response Time</div>
+                    <div className="metric-label">{t('monitoring.avgResponseTime')}</div>
                     <div className="metric-value">{metric.avgResponseTime.toFixed(0)}ms</div>
                   </div>
                 </div>
