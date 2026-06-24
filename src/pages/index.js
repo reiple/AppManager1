@@ -1,1 +1,5 @@
 export { Dashboard } from './Dashboard'
+export { ApplicationManagement } from './ApplicationManagement'
+export { Logs } from './Logs'
+export { Monitoring } from './Monitoring'
+export { Settings } from './Settings'
