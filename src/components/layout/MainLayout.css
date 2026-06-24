@@ -1,0 +1,30 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+  overflow-y: auto;
+}
+
+.content-area {
+  flex: 1;
+  padding: 24px;
+  background-color: #fafafa;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+}

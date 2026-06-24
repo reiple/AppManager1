@@ -32,7 +32,7 @@
 - **JavaScript**: 현대적인 JavaScript (ES6+) 문법을 사용. (TypeScript는 사용하지 않음)
 - **API 연동**: 백엔드가 별도 존재하므로 API 요청은 전역 서비스 레이어(`src/services/` 또는 `src/api/`)로 분리하고, UI 컴포넌트 내부에 직접적인 fetch/axios 호출을 지양.
 - **스타일링**: 컴포넌트별 스코프 스타일(CSS Modules, Tailwind CSS 등 프로젝트 설정에 따름)을 준수하여 스타일 오염 방지.
-
+- **코드 관리**: 기능이 추가될 때마다 commit할것
 ---
 
 ## 디렉토리 구조 전략
