@@ -63,6 +63,12 @@ npm run build
 npm run lint
 ```
 
+## 📸 스크린샷
+
+### 메인 페이지
+
+![Application Manager Web Console 메인 페이지](./docs/screenshot.png)
+
 ## 🎨 주요 기능
 
 - **접을 수 있는 사이드바**: 메뉴를 숨기고 표시할 수 있는 토글 기능
