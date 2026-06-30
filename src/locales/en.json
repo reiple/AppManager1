@@ -6,6 +6,7 @@
     "logs": "Logs",
     "monitoring": "Monitoring",
     "settings": "Settings",
+    "objectStorage": "Object Storage",
     "language": "Language"
   },
   "dashboard": {
@@ -84,6 +85,86 @@
     "requestsPerMin": "Requests/min",
     "errorRate": "Error Rate",
     "avgResponseTime": "Avg Response Time"
+  },
+  "objectStorage": {
+    "title": "Object Storage",
+    "subtitle": "Manage storage connections and browse files",
+    "storages": "Storages",
+    "home": "Home",
+    "name": "Name",
+    "size": "Size",
+    "modified": "Modified",
+    "type": "Type",
+    "objects": "objects",
+    "bucket": "Bucket",
+    "folder": "Folder",
+    "searchPlaceholder": "Search files...",
+    "goUp": "Go up",
+    "download": "Download",
+    "delete": "Delete",
+    "empty": "This folder is empty",
+    "noResults": "No results found",
+    "noStorages": "No storage connections registered. Add a new storage to get started.",
+    "noBuckets": "No buckets in this storage. Create a new bucket to get started.",
+    "createBucket": "Create Bucket",
+    "deleteBucket": "Delete Bucket",
+    "bucketTable": {
+      "region": "Region",
+      "accessControl": "Access",
+      "objects": "Objects",
+      "totalSize": "Total Size",
+      "createdAt": "Created"
+    },
+    "bucketForm": {
+      "name": "Bucket Name",
+      "region": "Region",
+      "accessControl": "Access Control"
+    },
+    "accessControl": {
+      "public": "Public",
+      "private": "Private"
+    },
+    "loading": "Loading...",
+    "loadingObjects": "Loading objects...",
+    "retry": "Retry",
+    "addStorage": "Add Storage",
+    "deleteStorage": "Delete Storage",
+    "upload": "Upload",
+    "uploadFile": "Upload File",
+    "cancel": "Cancel",
+    "saving": "Saving...",
+    "uploading": "Uploading...",
+    "uploadSuccess": "Upload complete",
+    "confirmDelete": "Confirm Delete",
+    "deleteMsg": "Are you sure you want to delete \"{{name}}\"? This action cannot be undone.",
+    "deleting": "Deleting...",
+    "clickToSelect": "Click to select a file",
+    "objectKey": "Object Key (storage path)",
+    "storageTable": {
+      "bucket": "Bucket",
+      "region": "Region",
+      "endpoint": "Endpoint"
+    },
+    "form": {
+      "name": "Storage Name",
+      "bucketName": "Bucket Name",
+      "accessKey": "Access Key",
+      "secretKey": "Secret Key",
+      "endpointUrl": "Endpoint URL (optional)",
+      "regionName": "Region Name (optional)"
+    },
+    "toast": {
+      "addStorageSuccess": "Storage added successfully",
+      "deleteStorageSuccess": "Storage deleted",
+      "createBucketSuccess": "Bucket created",
+      "deleteBucketSuccess": "Bucket deleted",
+      "deleteObjectSuccess": "Object deleted",
+      "uploadSuccess": "File uploaded successfully",
+      "downloadReady": "Download link is ready"
+    },
+    "error": {
+      "loadFailed": "Failed to load data. Please try again."
+    }
   },
   "settings": {
     "title": "Settings",

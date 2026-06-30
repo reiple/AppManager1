@@ -6,6 +6,7 @@
     "logs": "日志",
     "monitoring": "监控",
     "settings": "设置",
+    "objectStorage": "对象存储",
     "language": "语言"
   },
   "dashboard": {
@@ -84,6 +85,86 @@
     "requestsPerMin": "请求数/分钟",
     "errorRate": "错误率",
     "avgResponseTime": "平均响应时间"
+  },
+  "objectStorage": {
+    "title": "对象存储",
+    "subtitle": "管理存储连接并浏览文件",
+    "storages": "存储列表",
+    "home": "主页",
+    "name": "名称",
+    "size": "大小",
+    "modified": "修改日期",
+    "type": "类型",
+    "objects": "个对象",
+    "bucket": "存储桶",
+    "folder": "文件夹",
+    "searchPlaceholder": "搜索文件...",
+    "goUp": "上级目录",
+    "download": "下载",
+    "delete": "删除",
+    "empty": "文件夹为空",
+    "noResults": "没有找到结果",
+    "noStorages": "没有注册的存储连接。请添加新的存储开始使用。",
+    "noBuckets": "此存储中没有存储桶。请创建新的存储桶。",
+    "createBucket": "创建存储桶",
+    "deleteBucket": "删除存储桶",
+    "bucketTable": {
+      "region": "区域",
+      "accessControl": "访问权限",
+      "objects": "对象数量",
+      "totalSize": "总大小",
+      "createdAt": "创建时间"
+    },
+    "bucketForm": {
+      "name": "存储桶名称",
+      "region": "区域",
+      "accessControl": "访问控制"
+    },
+    "accessControl": {
+      "public": "公开",
+      "private": "私有"
+    },
+    "loading": "加载中...",
+    "loadingObjects": "正在加载对象列表...",
+    "retry": "重试",
+    "addStorage": "添加存储",
+    "deleteStorage": "删除存储",
+    "upload": "上传",
+    "uploadFile": "上传文件",
+    "cancel": "取消",
+    "saving": "保存中...",
+    "uploading": "上传中...",
+    "uploadSuccess": "上传完成",
+    "confirmDelete": "确认删除",
+    "deleteMsg": "确定要删除 \"{{name}}\" 吗？此操作不可撤销。",
+    "deleting": "删除中...",
+    "clickToSelect": "点击选择文件",
+    "objectKey": "对象键（存储路径）",
+    "storageTable": {
+      "bucket": "存储桶",
+      "region": "区域",
+      "endpoint": "端点"
+    },
+    "form": {
+      "name": "存储名称",
+      "bucketName": "存储桶名称",
+      "accessKey": "访问密钥",
+      "secretKey": "密钥",
+      "endpointUrl": "端点 URL（可选）",
+      "regionName": "区域名称（可选）"
+    },
+    "toast": {
+      "addStorageSuccess": "存储添加成功",
+      "deleteStorageSuccess": "存储已删除",
+      "createBucketSuccess": "存储桶已创建",
+      "deleteBucketSuccess": "存储桶已删除",
+      "deleteObjectSuccess": "对象已删除",
+      "uploadSuccess": "文件上传成功",
+      "downloadReady": "下载链接已准备好"
+    },
+    "error": {
+      "loadFailed": "加载数据失败，请重试。"
+    }
   },
   "settings": {
     "title": "设置",

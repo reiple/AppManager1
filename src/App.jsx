@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { MainLayout } from './components'
-import { Dashboard, ApplicationManagement, Logs, Monitoring, Settings } from './pages'
+import { Dashboard, ApplicationManagement, Logs, Monitoring, Settings, ObjectStorage } from './pages'
 import './App.css'
 
 const queryClient = new QueryClient()
@@ -16,6 +16,7 @@ function App() {
             <Route path="/applications" element={<ApplicationManagement />} />
             <Route path="/logs" element={<Logs />} />
             <Route path="/monitoring" element={<Monitoring />} />
+            <Route path="/object-storage" element={<ObjectStorage />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>
         </MainLayout>

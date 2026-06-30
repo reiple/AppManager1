@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import './Header.css'
 
-export function Header() {
+export function Header({ onToggleSidebar }) {
   const { i18n, t } = useTranslation()
 
   const user = {
@@ -19,6 +19,14 @@ export function Header() {
   return (
     <header className="header">
       <div className="header-content">
+        <button
+          className="sidebar-toggle-btn"
+          onClick={onToggleSidebar}
+          aria-label="Toggle sidebar"
+        >
+          ☰
+        </button>
+
         <div className="header-title">
           <h1>{t('common.appName')}</h1>
         </div>

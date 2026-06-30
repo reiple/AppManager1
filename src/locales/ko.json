@@ -6,6 +6,7 @@
     "logs": "로그",
     "monitoring": "모니터링",
     "settings": "설정",
+    "objectStorage": "오브젝트 스토리지",
     "language": "언어"
   },
   "dashboard": {
@@ -84,6 +85,86 @@
     "requestsPerMin": "요청/분",
     "errorRate": "오류율",
     "avgResponseTime": "평균 응답 시간"
+  },
+  "objectStorage": {
+    "title": "오브젝트 스토리지",
+    "subtitle": "스토리지 연결을 관리하고 파일을 탐색합니다",
+    "storages": "스토리지 목록",
+    "home": "홈",
+    "name": "이름",
+    "size": "크기",
+    "modified": "수정일",
+    "type": "유형",
+    "objects": "개 오브젝트",
+    "bucket": "버킷",
+    "folder": "폴더",
+    "searchPlaceholder": "파일 검색...",
+    "goUp": "상위 폴더",
+    "download": "다운로드",
+    "delete": "삭제",
+    "empty": "폴더가 비어 있습니다",
+    "noResults": "검색 결과가 없습니다",
+    "noStorages": "등록된 스토리지가 없습니다. 새 스토리지를 추가해 주세요.",
+    "noBuckets": "이 스토리지에 버킷이 없습니다. 새 버킷을 생성해 주세요.",
+    "createBucket": "버킷 생성",
+    "deleteBucket": "버킷 삭제",
+    "bucketTable": {
+      "region": "리전",
+      "accessControl": "접근 권한",
+      "objects": "오브젝트 수",
+      "totalSize": "전체 크기",
+      "createdAt": "생성일"
+    },
+    "bucketForm": {
+      "name": "버킷 이름",
+      "region": "리전",
+      "accessControl": "접근 권한"
+    },
+    "accessControl": {
+      "public": "공개",
+      "private": "비공개"
+    },
+    "loading": "불러오는 중...",
+    "loadingObjects": "오브젝트 목록을 불러오는 중...",
+    "retry": "다시 시도",
+    "addStorage": "스토리지 추가",
+    "deleteStorage": "스토리지 삭제",
+    "upload": "업로드",
+    "uploadFile": "파일 업로드",
+    "cancel": "취소",
+    "saving": "저장 중...",
+    "uploading": "업로드 중...",
+    "uploadSuccess": "업로드가 완료되었습니다",
+    "confirmDelete": "삭제 확인",
+    "deleteMsg": "\"{{name}}\"을(를) 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    "deleting": "삭제 중...",
+    "clickToSelect": "클릭하여 파일을 선택하세요",
+    "objectKey": "오브젝트 키 (저장 경로)",
+    "storageTable": {
+      "bucket": "버킷",
+      "region": "리전",
+      "endpoint": "엔드포인트"
+    },
+    "form": {
+      "name": "스토리지 이름",
+      "bucketName": "버킷 이름",
+      "accessKey": "액세스 키",
+      "secretKey": "시크릿 키",
+      "endpointUrl": "엔드포인트 URL (선택)",
+      "regionName": "리전 이름 (선택)"
+    },
+    "toast": {
+      "addStorageSuccess": "스토리지가 성공적으로 추가되었습니다",
+      "deleteStorageSuccess": "스토리지가 삭제되었습니다",
+      "createBucketSuccess": "버킷이 생성되었습니다",
+      "deleteBucketSuccess": "버킷이 삭제되었습니다",
+      "deleteObjectSuccess": "오브젝트가 삭제되었습니다",
+      "uploadSuccess": "파일이 성공적으로 업로드되었습니다",
+      "downloadReady": "다운로드 링크가 준비되었습니다"
+    },
+    "error": {
+      "loadFailed": "데이터를 불러오지 못했습니다. 다시 시도해 주세요."
+    }
   },
   "settings": {
     "title": "설정",
