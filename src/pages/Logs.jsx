@@ -74,14 +74,14 @@ export function Logs() {
     return appMatch && levelMatch
   })
 
-  const getLevelColor = (level) => {
-    const colors = {
-      INFO: '#17a2b8',
-      WARN: '#ffc107',
-      ERROR: '#dc3545',
-      DEBUG: '#6c757d',
+  const getLevelStyle = (level) => {
+    const styles = {
+      INFO: { background: 'rgba(0, 240, 255, 0.12)', color: '#00f0ff', border: '1px solid rgba(0, 240, 255, 0.3)' },
+      WARN: { background: 'rgba(255, 200, 0, 0.12)', color: '#ffc800', border: '1px solid rgba(255, 200, 0, 0.3)' },
+      ERROR: { background: 'rgba(255, 0, 122, 0.12)', color: '#ff007a', border: '1px solid rgba(255, 0, 122, 0.3)' },
+      DEBUG: { background: 'rgba(123, 47, 255, 0.12)', color: '#a855f7', border: '1px solid rgba(123, 47, 255, 0.3)' },
     }
-    return colors[level] || '#6c757d'
+    return styles[level] || styles.DEBUG
   }
 
   const handleClearLogs = () => {
@@ -136,7 +136,7 @@ export function Logs() {
                 <div className="log-app">{log.app}</div>
                 <div
                   className="log-level"
-                  style={{ backgroundColor: getLevelColor(log.level), color: 'white' }}
+                  style={getLevelStyle(log.level)}
                 >
                   {log.level}
                 </div>

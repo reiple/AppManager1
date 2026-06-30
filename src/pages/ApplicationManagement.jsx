@@ -60,8 +60,10 @@ export function ApplicationManagement() {
     )
   }
 
-  const getStatusColor = (status) => {
-    return status === 'running' ? '#28a745' : '#dc3545'
+  const getStatusStyle = (status) => {
+    return status === 'running'
+      ? { background: 'rgba(0, 255, 136, 0.12)', color: '#00ff88', border: '1px solid rgba(0, 255, 136, 0.3)' }
+      : { background: 'rgba(255, 0, 122, 0.12)', color: '#ff007a', border: '1px solid rgba(255, 0, 122, 0.3)' }
   }
 
   return (
@@ -90,7 +92,7 @@ export function ApplicationManagement() {
                 <td className="app-name">{t(app.nameKey)}</td>
                 <td>{app.port}</td>
                 <td>
-                  <span className="status-badge" style={{ backgroundColor: getStatusColor(app.status) }}>
+                  <span className="status-badge" style={getStatusStyle(app.status)}>
                     {app.status === 'running' ? t('applications.running') : t('applications.stopped')}
                   </span>
                 </td>
