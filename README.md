@@ -1,65 +1,97 @@
 # Application Manager Web Console
 
-**Spring Boot 애플리케이션을 관리하기 위한 전문가급 웹 기반 관리 콘솔**
+**클라우드 인프라를 관리하기 위한 전문가급 웹 기반 관리 콘솔**
 
-Application Manager Web Console은 React와 Vite를 활용하여 Spring Boot 애플리케이션을 효율적으로 관리할 수 있는 대시보드입니다. 실시간 모니터링, 로그 분석, 애플리케이션 제어 등 다양한 기능을 제공합니다.
+Application Manager Web Console은 React와 Vite를 활용하여 애플리케이션과 오브젝트 스토리지를 효율적으로 관리할 수 있는 풀스택 대시보드입니다. 실시간 모니터링, 로그 분석, S3 호환 오브젝트 스토리지 관리 등 다양한 기능을 제공합니다.
 
 ## 📋 프로젝트 개요
 
 - **다국어 지원**: 영어, 한국어, 중국어 (헤더 dropdown에서 선택 가능)
 - **반응형 레이아웃**: 접을 수 있는 사이드바 메뉴 + 메인 콘텐츠 영역
 - **헤더**: 로그인 정보, 사용자 프로필, 언어 선택 기능
-- **프론트엔드 클라이언트**: React 기반 SPA (Single Page Application)
-- **백엔드**: 별도 API 서버와 통신 (모듈 준비 완료)
+- **프론트엔드**: React 기반 SPA (Single Page Application)
+- **백엔드**: Python FastAPI 기반 REST API 서버
 
 ## 🛠️ 기술 스택
 
-- **프론트엔드 프레임워크**: React 19.2+ (함수형 컴포넌트, Hooks)
+### 프론트엔드
+
+- **프레임워크**: React 19.2+ (함수형 컴포넌트, Hooks)
 - **번들러**: Vite 8.1+
 - **언어**: JavaScript (ES6+)
 - **라우팅**: React Router v6+
 - **상태 관리**: Zustand
-- **API 통신**: React Query (@tanstack/react-query)
+- **API 통신**: React Query (@tanstack/react-query v5), axios
 - **다국어 지원**: i18next + react-i18next
 - **UI 라이브러리**: Material-UI (MUI)
 - **패키지 관리자**: npm
 - **스타일링**: CSS (Scoped CSS)
 
+### 백엔드
+
+- **언어**: Python 3.12+
+- **프레임워크**: FastAPI 0.115+
+- **서버**: Uvicorn
+- **스토리지**: boto3 (S3 호환 오브젝트 스토리지)
+- **데이터 유효성 검사**: Pydantic v2
+- **패키지 관리자**: uv
+
 ## 📁 디렉토리 구조
 
 ```
-src/
-├── components/
-│   ├── layout/           # 레이아웃 컴포넌트
-│   │   ├── Sidebar.jsx         # 접을 수 있는 사이드바 메뉴
-│   │   ├── Header.jsx          # 헤더 (사용자 정보 + 언어 선택)
-│   │   └── MainLayout.jsx      # 전체 레이아웃
-│   └── common/           # 재사용 가능한 공통 UI 요소
-├── pages/                # 기능별 페이지
-│   ├── Dashboard.jsx           # 대시보드 (시스템 요약)
-│   ├── ApplicationManagement.jsx # 애플리케이션 관리
-│   ├── Logs.jsx                # 로그 조회 및 필터링
-│   ├── Monitoring.jsx          # 실시간 모니터링
-│   └── Settings.jsx            # 설정 관리
-├── locales/              # 다국어 번역 파일
-│   ├── en.json          # 영어
-│   ├── ko.json          # 한국어
-│   └── zh.json          # 중국어 (간체)
-├── services/             # 백엔드 API 통신 레이어
-├── i18n.js              # i18next 설정
-├── App.jsx
-└── main.jsx
+AppManager1/
+├── src/                          # 프론트엔드 소스
+│   ├── components/
+│   │   ├── layout/               # 레이아웃 컴포넌트
+│   │   │   ├── Sidebar.jsx             # 접을 수 있는 사이드바 메뉴
+│   │   │   ├── Header.jsx              # 헤더 (사용자 정보 + 언어 선택)
+│   │   │   └── MainLayout.jsx          # 전체 레이아웃
+│   │   └── common/               # 재사용 가능한 공통 UI 요소
+│   ├── pages/                    # 기능별 페이지
+│   │   ├── Dashboard.jsx               # 대시보드 (시스템 요약)
+│   │   ├── ApplicationManagement.jsx   # 애플리케이션 관리
+│   │   ├── Logs.jsx                    # 로그 조회 및 필터링
+│   │   ├── Monitoring.jsx              # 실시간 모니터링
+│   │   ├── ObjectStorage.jsx           # 오브젝트 스토리지 관리
+│   │   └── Settings.jsx                # 설정 관리
+│   ├── locales/                  # 다국어 번역 파일
+│   │   ├── en.json                     # 영어
+│   │   ├── ko.json                     # 한국어
+│   │   └── zh.json                     # 중국어 (간체)
+│   ├── services/                 # 백엔드 API 통신 레이어
+│   │   └── storageApi.js               # 오브젝트 스토리지 API
+│   ├── i18n.js                   # i18next 설정
+│   ├── App.jsx
+│   └── main.jsx
+└── backend/                      # 백엔드 소스
+    ├── app/
+    │   ├── main.py                     # FastAPI 앱 진입점
+    │   ├── routers/
+    │   │   └── storage.py              # 스토리지/버킷/오브젝트 라우터
+    │   ├── services/
+    │   │   └── storage_manager.py      # S3 연동 비즈니스 로직
+    │   ├── schemas/
+    │   │   └── storage.py              # Pydantic 스키마
+    │   ├── models/
+    │   │   └── storage.py              # 데이터 모델
+    │   ├── dependencies.py             # FastAPI 의존성
+    │   └── errors.py                   # 에러 핸들링
+    ├── tests/
+    │   └── test_storage_api.py         # API 테스트
+    └── pyproject.toml                  # Python 의존성 정의
 ```
 
 ## 🚀 시작하기
 
-### 1. 의존성 설치
+### 프론트엔드
+
+#### 1. 의존성 설치
 
 ```bash
 npm install
 ```
 
-### 2. 개발 서버 실행
+#### 2. 개발 서버 실행
 
 ```bash
 npm run dev
@@ -67,7 +99,7 @@ npm run dev
 
 개발 서버가 시작되면 브라우저에서 `http://localhost:5173` 접속
 
-### 3. 프로덕션 빌드
+#### 3. 프로덕션 빌드
 
 ```bash
 npm run build
@@ -75,28 +107,43 @@ npm run build
 
 최적화된 프로덕션 번들이 `dist/` 디렉토리에 생성됩니다.
 
-### 4. 코드 린트 확인
+#### 4. 코드 린트 확인
 
 ```bash
 npm run lint
 ```
 
-## 📸 스크린샷
+---
 
-### Dashboard (대시보드)
-![Dashboard](./docs/screenshots/dashboard.png)
+### 백엔드
 
-### Application Management (애플리케이션 관리)
-![Application Management](./docs/screenshots/applications.png)
+#### 1. uv 설치 (처음 한 번)
 
-### Logs (로그 조회)
-![Logs](./docs/screenshots/logs.png)
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
-### Monitoring (실시간 모니터링)
-![Monitoring](./docs/screenshots/monitoring.png)
+#### 2. 백엔드 디렉토리로 이동
 
-### Settings (설정 관리)
-![Settings](./docs/screenshots/settings.png)
+```bash
+cd backend
+```
+
+#### 3. 개발 서버 실행
+
+```bash
+uv run uvicorn app.main:app --reload
+```
+
+서버가 시작되면 `http://127.0.0.1:8000` 에서 API가 제공됩니다.
+- Swagger UI: `http://127.0.0.1:8000/docs`
+- ReDoc: `http://127.0.0.1:8000/redoc`
+
+#### 4. 테스트 실행
+
+```bash
+uv run pytest tests/test_storage_api.py -q
+```
 
 ## 🎨 주요 기능
 
@@ -130,23 +177,33 @@ npm run lint
 - 3초마다 자동 갱신
 - 건강도 상태 표시 (정상🟢/경고🟡/심각🔴)
 
-### 5. **Settings (설정 관리)**
+### 5. **Object Storage (오브젝트 스토리지)** ✨
+- **스토리지 연결 관리**: S3 호환 스토리지 연결 등록/삭제
+- **3단계 탐색**: 스토리지 목록 → 버킷 목록 → 오브젝트 탐색
+- **버킷 관리**: 버킷 생성/삭제, 접근 권한 설정 (공개/비공개)
+- **오브젝트 탐색**: 가상 폴더 구조 지원, 경로 브레드크럼 네비게이션
+- **파일 업로드**: 멀티파트 업로드 지원
+- **파일 다운로드**: Presigned URL 기반 안전한 다운로드
+- **실시간 피드백**: 작업 결과 토스트 알림
+- FastAPI 백엔드와 완전 연동 (`http://localhost:8000`)
+
+### 6. **Settings (설정 관리)**
 - **일반 설정**: 앱 이름, 갱신 간격, 로그 보관 기간 설정
 - **기능 토글**: 알림, 자동 재시작, 유지보수 모드
 - **위험 작업**: 로그 삭제, 설정 초기화, 설정 내보내기
 - 현재 설정 JSON 미리보기
 
-### 6. **다국어 지원** 🌍
+### 7. **다국어 지원** 🌍
 - **3개 언어 지원**: 영어(English), 한국어(한국어), 중국어(中文)
 - 헤더의 **언어 선택 dropdown**에서 즉시 변경
 - 페이지 새로고침 없이 실시간 언어 변환
 - 선택한 언어는 localStorage에 저장되어 다음 방문 시에도 유지
 
-### 7. **UI/UX 특징**
+### 8. **UI/UX 특징**
 - **접을 수 있는 사이드바**: 메뉴 토글 기능으로 화면 공간 최적화
-- **반응형 디자인**: 모바일/태블릿/데스크톱 모두 지원
+- **다크 네온 글래스모피즘**: 현대적인 UI 디자인
 - **직관적인 네비게이션**: React Router 기반 SPA
-- **시각적 피드백**: 상태별 색상 코딩 (초록/주황/빨강)
+- **시각적 피드백**: 상태별 색상 코딩
 - **실시간 업데이트**: 자동 갱신 및 즉시 반영
 
 ## 📝 개발 가이드라인
@@ -186,82 +243,45 @@ return <h1>{t('dashboard.title')}</h1>
 - 백엔드 API 요청은 `src/services/` 디렉토리로 분리
 - 컴포넌트 내부에 직접적인 fetch/axios 호출 지양
 - React Query를 활용한 효율적인 데이터 페칭 및 캐싱
-- 현재는 모의 데이터(Mock Data)로 구현되어 있음
 
-## 📦 빌드 및 배포
+## 🔗 백엔드 API
 
-### 프로덕션 빌드
+오브젝트 스토리지 API는 FastAPI로 구현되어 있으며, `http://localhost:8000`에서 제공됩니다.
 
-```bash
-npm run build
-```
-
-### 빌드 결과물 확인
-
-```bash
-npm run preview
-```
-
-빌드된 파일을 로컬에서 프리뷰합니다.
-
-## 🔗 백엔드 API 연동
-
-이 프로젝트는 별도의 **Spring Boot 백엔드 API 서버**와 통신하도록 설계되었습니다.
-
-### 현재 상태
-- ✅ 프론트엔드 UI/UX 완성
-- ✅ 라우팅 및 페이지 구조 구성
-- ✅ 다국어 지원 완료
-- 🔄 백엔드 API 대기 중 (Mock 데이터로 테스트 가능)
-
-### 백엔드 연동 예정 API 엔드포인트
+### 주요 엔드포인트
 
 | 기능 | HTTP Method | 엔드포인트 |
 |------|-------------|-----------|
-| 애플리케이션 목록 조회 | GET | `/api/applications` |
-| 애플리케이션 상세 조회 | GET | `/api/applications/{id}` |
-| 애플리케이션 시작 | POST | `/api/applications/{id}/start` |
-| 애플리케이션 중지 | POST | `/api/applications/{id}/stop` |
-| 로그 조회 | GET | `/api/logs?app={appId}&level={level}` |
-| 메트릭 조회 | GET | `/api/metrics/{appId}` |
-| 시스템 상태 조회 | GET | `/api/system/status` |
+| 스토리지 목록 조회 | GET | `/api/v1/storages` |
+| 스토리지 등록 | POST | `/api/v1/storages` |
+| 스토리지 삭제 | DELETE | `/api/v1/storages/{id}` |
+| 연결 테스트 | POST | `/api/v1/storages/{id}/test` |
+| 버킷 목록 조회 | GET | `/api/v1/buckets` |
+| 버킷 생성 | POST | `/api/v1/buckets` |
+| 버킷 삭제 | DELETE | `/api/v1/buckets/{id}` |
+| 오브젝트 목록 조회 | GET | `/api/v1/buckets/{id}/objects` |
+| 오브젝트 업로드 | POST | `/api/v1/buckets/{id}/objects` |
+| 오브젝트 삭제 | DELETE | `/api/v1/storages/{id}/objects/{key}` |
+| Presigned URL 생성 | POST | `/api/v1/storages/{id}/presigned-url` |
 
-### 환경 변수 설정
+자세한 API 명세는 `backend/API.md` 참조.
 
-`.env` 파일을 프로젝트 루트에 생성하고 다음을 추가합니다:
+### 현재 상태
 
-```env
-VITE_API_BASE_URL=http://localhost:8080/api
-VITE_APP_NAME=Application Manager
-```
+- ✅ 프론트엔드 UI/UX 완성
+- ✅ 라우팅 및 페이지 구조 구성
+- ✅ 다국어 지원 완료 (한국어/영어/중국어)
+- ✅ 오브젝트 스토리지 백엔드 API 구현 완료 (FastAPI)
+- ✅ 프론트엔드-백엔드 오브젝트 스토리지 완전 연동
 
-## 🚀 배포
+## 📦 빌드 및 배포
 
-### Docker를 사용한 배포
+### 프론트엔드 프로덕션 빌드
 
 ```bash
-# 프로덕션 빌드
 npm run build
-
-# Docker 이미지 생성 (Dockerfile이 필요함)
-docker build -t appmanager:latest .
-
-# 컨테이너 실행
-docker run -p 3000:80 appmanager:latest
+npm run preview
 ```
-
-## 📄 라이선스
-
-프로젝트에 대한 라이선스 정보는 프로젝트 루트의 LICENSE 파일을 참고하세요.
-
-## 👤 개발자
-
-**Application Manager Web Console 개발팀**
-
-- 프론트엔드: React + Vite
-- 다국어 지원: i18next
-- 상태관리: Zustand
-- UI: Material-UI
 
 ## 🐛 버그 리포트 및 기능 요청
 
@@ -269,9 +289,17 @@ docker run -p 3000:80 appmanager:latest
 
 ---
 
-**마지막 업데이트**: 2026-06-25
+**마지막 업데이트**: 2026-06-30
 
 ## 📚 주요 업데이트 이력
+
+### v1.2.0 (2026-06-30)
+- ✨ 오브젝트 스토리지 페이지 추가 (S3 호환 스토리지 관리)
+- ✨ Python FastAPI 백엔드 추가
+- ✨ 3단계 스토리지 탐색 (스토리지 → 버킷 → 오브젝트)
+- ✨ 파일 업로드/다운로드 (멀티파트, Presigned URL)
+- ✨ 버킷 생성/삭제 기능
+- 🎨 다크 네온 글래스모피즘 UI 리디자인
 
 ### v1.1.0 (2026-06-25)
 - ✨ 다국어 지원 추가 (영어, 한국어, 중국어)
